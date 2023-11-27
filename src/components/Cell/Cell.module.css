@@ -1,0 +1,17 @@
+.cell {
+  width: 64px;
+  height: 64px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.black {
+  background-color: #b88b4a;
+  /* border: 1px solid white; */
+}
+
+.white {
+  background-color: #e3c16f;
+  /* border: 1px solid black; */
+}
