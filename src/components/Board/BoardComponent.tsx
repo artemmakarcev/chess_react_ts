@@ -10,14 +10,14 @@ interface BoardProps {
 
 const BoardComponent: FC<BoardProps> = ({ board, setBoard }) => {
   return (
-    <div className="board">
-      {board.cells.map((row, index) => 
+    <div className={styles.board}>
+      {board.cells.map((row, index) => (
         <React.Fragment key={index}>
-          {row.map(cell => 
-            <CellComponent />
-          )}
+          {row.map((cell) => (
+            <CellComponent key={cell.id} cell={cell} />
+          ))}
         </React.Fragment>
-      )}
+      ))}
     </div>
   );
 };
