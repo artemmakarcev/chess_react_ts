@@ -77,7 +77,17 @@ export class Board {
     new Rook(Colors.WHITE, this.getCell(7, 7));
   }
 
-  // public addFisherFigures(){}
+  public addFisherFigures() {
+    for (let i = 0; i < 3; i++) {
+      for (let j = 5; j < 8; j++) {
+        new Pawn(Colors.BLACK, this.getCell(i, j));
+        new Pawn(Colors.WHITE, this.getCell(j, i));
+      }
+    }
+
+    new King(Colors.BLACK, this.getCell(6, 1));
+    new King(Colors.WHITE, this.getCell(1, 6));
+  }
 
   public addFigures() {
     this.addBishops();

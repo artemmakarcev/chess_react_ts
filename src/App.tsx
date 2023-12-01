@@ -14,6 +14,7 @@ const App = () => {
     const newBoard = new Board();
     newBoard.initCells();
     newBoard.addFigures();
+    // newBoard.addFisherFigures();
     setBoard(newBoard);
   }
 
