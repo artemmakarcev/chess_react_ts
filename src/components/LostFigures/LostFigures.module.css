@@ -1,0 +1,6 @@
+.lost {
+  min-height: calc((64px * 8) / 2);
+  padding: 30px;
+  margin-left: 50px;
+  background-color: lightgray;
+}
