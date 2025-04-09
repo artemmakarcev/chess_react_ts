@@ -19,7 +19,9 @@ const App = () => {
   }, []);
 
   function swapPlayer() {
-    setCurrentPlayer(currentPlayer?.color === Colors.WHITE ? blackPlayer : whitePlayer);
+    setCurrentPlayer(
+      currentPlayer?.color === Colors.WHITE ? blackPlayer : whitePlayer,
+    );
   }
 
   function restart() {
@@ -40,8 +42,14 @@ const App = () => {
         swapPlayer={swapPlayer}
       />
       <div>
-        <LostFiguresComponent title="Черные фигуры" figures={board.lostBlackFigures} />
-        <LostFiguresComponent title="Белые фигуры" figures={board.lostWhiteFigures} />
+        <LostFiguresComponent
+          title="Черные фигуры"
+          figures={board.lostBlackFigures}
+        />
+        <LostFiguresComponent
+          title="Белые фигуры"
+          figures={board.lostWhiteFigures}
+        />
       </div>
     </div>
   );

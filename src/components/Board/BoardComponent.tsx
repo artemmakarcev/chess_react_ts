@@ -12,11 +12,20 @@ interface BoardProps {
   swapPlayer: () => void;
 }
 
-const BoardComponent: FC<BoardProps> = ({ board, setBoard, currentPlayer, swapPlayer }) => {
+const BoardComponent: FC<BoardProps> = ({
+  board,
+  setBoard,
+  currentPlayer,
+  swapPlayer,
+}) => {
   const [selectedCell, setSelectedCell] = useState<Cell | null>(null);
 
   function click(cell: Cell) {
-    if (selectedCell && selectedCell !== cell && selectedCell.figure?.canMove(cell)) {
+    if (
+      selectedCell &&
+      selectedCell !== cell &&
+      selectedCell.figure?.canMove(cell)
+    ) {
       selectedCell.moveFigure(cell);
       swapPlayer();
       setSelectedCell(null);
@@ -50,7 +59,9 @@ const BoardComponent: FC<BoardProps> = ({ board, setBoard, currentPlayer, swapPl
                 click={click}
                 key={cell.id}
                 cell={cell}
-                selected={cell.x === selectedCell?.x && cell.y === selectedCell?.y}
+                selected={
+                  cell.x === selectedCell?.x && cell.y === selectedCell?.y
+                }
               />
             ))}
           </React.Fragment>

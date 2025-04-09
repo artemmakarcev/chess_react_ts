@@ -11,7 +11,13 @@ export class Cell {
   available: boolean; // is moving
   id: number; // for react keys
 
-  constructor(board: Board, x: number, y: number, color: Colors, figure: Figure | null) {
+  constructor(
+    board: Board,
+    x: number,
+    y: number,
+    color: Colors,
+    figure: Figure | null,
+  ) {
     this.x = x;
     this.y = y;
     this.color = color;
@@ -60,7 +66,8 @@ export class Cell {
     const dx = this.x < target.x ? 1 : -1;
 
     for (let i = 1; i < absY; i++) {
-      if (!this.board.getCell(this.x + dx * i, this.y + dy * i).isEmpty()) return false;
+      if (!this.board.getCell(this.x + dx * i, this.y + dy * i).isEmpty())
+        return false;
     }
 
     return true;

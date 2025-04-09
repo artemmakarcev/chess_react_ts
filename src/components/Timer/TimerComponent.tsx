@@ -1,4 +1,4 @@
-import React, { FC, useState, useRef, useEffect } from "react";
+import { FC, useState, useRef, useEffect } from "react";
 import { Player } from "../../models/Player";
 import { Colors } from "../../models/Colors";
 
@@ -21,7 +21,9 @@ const TimerComponent: FC<TimerProps> = ({ currentPlayer, restart }) => {
       clearInterval(timer.current);
     }
     const callback =
-      currentPlayer?.color === Colors.WHITE ? decrementWhiteTimer : decrementBlackTimer;
+      currentPlayer?.color === Colors.WHITE
+        ? decrementWhiteTimer
+        : decrementBlackTimer;
     timer.current = setInterval(callback, 1000);
   }
 

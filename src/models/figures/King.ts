@@ -18,10 +18,16 @@ export default class King extends Figure {
     if (dx === 1 && dy === 1) {
       return true;
     }
-    if (target.x === this.cell.x && (target.y === this.cell.y + 1 || target.y === this.cell.y - 1))
+    if (
+      target.x === this.cell.x &&
+      (target.y === this.cell.y + 1 || target.y === this.cell.y - 1)
+    )
       return true;
 
-    if (target.y === this.cell.y && (target.x === this.cell.x + 1 || target.x === this.cell.x - 1))
+    if (
+      target.y === this.cell.y &&
+      (target.x === this.cell.x + 1 || target.x === this.cell.x - 1)
+    )
       return true;
 
     return false;
