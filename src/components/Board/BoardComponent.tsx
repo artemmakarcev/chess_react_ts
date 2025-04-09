@@ -10,6 +10,8 @@ interface BoardProps {
   setBoard: (board: Board) => void;
   currentPlayer: Player | null;
   swapPlayer: () => void;
+  isBoardRotate: boolean;
+  setBoardRotate: (toggle: boolean) => void;
 }
 
 const BoardComponent: FC<BoardProps> = ({
@@ -17,6 +19,8 @@ const BoardComponent: FC<BoardProps> = ({
   setBoard,
   currentPlayer,
   swapPlayer,
+  isBoardRotate,
+  setBoardRotate,
 }) => {
   const [selectedCell, setSelectedCell] = useState<Cell | null>(null);
 
@@ -28,6 +32,7 @@ const BoardComponent: FC<BoardProps> = ({
     ) {
       selectedCell.moveFigure(cell);
       swapPlayer();
+      toggleRotateBoard();
       setSelectedCell(null);
     } else {
       if (cell.figure?.color === currentPlayer?.color) setSelectedCell(cell);
@@ -48,10 +53,18 @@ const BoardComponent: FC<BoardProps> = ({
     setBoard(newBoard);
   }
 
+  function toggleRotateBoard(): void {
+    setBoardRotate(isBoardRotate ? false : true);
+  }
+
   return (
     <div>
-      <h3>Текущий игрок {currentPlayer?.color}</h3>
-      <div className={styles.board}>
+      <h3 className={styles.currentPlayer}>Текущий игрок {currentPlayer?.color}</h3>
+      <div
+        className={[styles.board, isBoardRotate ? styles.boardRotate : ""].join(
+          " ",
+        )}
+      >
         {board.cells.map((row, index) => (
           <React.Fragment key={index}>
             {row.map((cell) => (
@@ -62,6 +75,7 @@ const BoardComponent: FC<BoardProps> = ({
                 selected={
                   cell.x === selectedCell?.x && cell.y === selectedCell?.y
                 }
+                isBoardRotate={isBoardRotate}
               />
             ))}
           </React.Fragment>

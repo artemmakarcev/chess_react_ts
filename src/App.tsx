@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import "./App.css";
 import BoardComponent from "./components/Board/BoardComponent";
 import LostFiguresComponent from "./components/LostFigures/LostFiguresComponent";
@@ -12,6 +12,7 @@ const App = () => {
   const [whitePlayer, setWhitePlayer] = useState(new Player(Colors.WHITE));
   const [blackPlayer, setBlackPlayer] = useState(new Player(Colors.BLACK));
   const [currentPlayer, setCurrentPlayer] = useState<Player | null>(null);
+  const [isBoardRotate, setBoardRotate] = useState(false);
 
   useEffect(() => {
     restart();
@@ -34,12 +35,18 @@ const App = () => {
 
   return (
     <div className="app">
-      <TimerComponent currentPlayer={currentPlayer} restart={restart} />
+      <TimerComponent
+        currentPlayer={currentPlayer}
+        restart={restart}
+        setBoardRotate={setBoardRotate}
+      />
       <BoardComponent
         board={board}
         setBoard={setBoard}
         currentPlayer={currentPlayer}
         swapPlayer={swapPlayer}
+        isBoardRotate={isBoardRotate}
+        setBoardRotate={setBoardRotate}
       />
       <div>
         <LostFiguresComponent

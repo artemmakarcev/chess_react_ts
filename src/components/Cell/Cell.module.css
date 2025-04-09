@@ -32,3 +32,8 @@
   border-radius: 50%;
   background-color: green;
 }
+
+.cellRotate img {
+  transform: rotate(180deg);
+}
+
